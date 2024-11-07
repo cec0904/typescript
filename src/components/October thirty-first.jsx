@@ -1,3 +1,5 @@
+import { addDoc, collection } from "firebase/firestore";
+import { firestore } from "../firebaseConfig";
 
 
 const TextArea = styled.div`
@@ -48,7 +50,51 @@ export default () => {
     //2. 업로드한 이미지를 State에 저장
     const onChangeFile = () => {};
     //3. Server(Firebase)에 최종 제출
-    const onSubmit = () => {};
+    
+    
+    
+    
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+    try{
+        const user = auth.currentUser;
+        if(user == null || post == ""){
+            return;
+        }
+        //----- Loading 시작 -----
+        //2. Firebase에 특정 위치에 제출
+        const myPost = {
+            nickname : user.displayName,
+            useId : user.id,
+            createdAt : Date.now(),
+            post : post,
+            photo : file
+        };
+    };
+};
+    //0. firebase의 Setting
+    //1. 제출 정보(text, photo, user)
+    const user = auth.currentUser;
+    
+   
+    //ㄴ user의 Nickname
+    user.displayName
+    //ㄴ user의 id값
+    user.id
+    //ㄴ 포스트 작성(생성) 시간
+    Date.now()
+    //ㄴ 작성한 Text
+    post
+    //ㄴ 첨부한 Photo
+  
+    }
+    // ----- firestore DB 에 myPost 업로드 -----
+    const path = collection(firestore, "posts");
+    addDoc(path, myPost);
+    // ----- Error 예외처리 -----
+    // ----- Loading 종료 -----
+    //ㄴ
+
     
 
 

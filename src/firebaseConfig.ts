@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from'firebase/auth';
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,3 +24,6 @@ const analytics = getAnalytics(app);
 
 // 파이어베이스 인증 정보
 export const auth = getAuth(app);
+
+// 파이어베이스 DB(firestore) 정보
+export const firestore = getFirestore(app);
